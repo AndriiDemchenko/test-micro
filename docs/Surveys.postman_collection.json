@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "61066713-949f-466c-8e2d-9c35fbafc77a",
+		"name": "Surveys",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29607261"
+	},
+	"item": [
+		{
+			"name": "Get survey",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"test\",\r\n    \"questions\": [\r\n        \"Q1\",\r\n        \"Q2\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/surveys/2",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"surveys",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create survey",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"test\",\r\n    \"questions\": [\r\n        \"Conflict if no\",\r\n        \"Conflict if answer same as next one\",\r\n        \"Conflict if answer same as prev one\"\r\n    ],\r\n    \"conflictRules\": {\r\n        \"0\": {\r\n            \"ne\": \"no\"\r\n        },\r\n        \"1\": {\r\n            \"eq\": 2\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/surveys",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"surveys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save answers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"answers\": [\r\n        \"yes\",\r\n        \"yes\",\r\n        \"no\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/surveys/2/answers",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"surveys",
+						"2",
+						"answers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete survey",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"test\",\r\n    \"questions\": [\r\n        \"Q1\",\r\n        \"Q2\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/surveys/5",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"surveys",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

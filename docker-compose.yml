@@ -1,0 +1,56 @@
+# Use postgres/example user/password credentials
+version: '3.9'
+
+services:
+  db:
+    container_name: db-pg
+    image: postgres:12.19
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: example
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/api-gateway
+      - /api-gateway/node_modules
+
+  auth-service:
+    build: ./auth-service
+    container_name: auth-service
+    ports:
+      - '5001:5001'
+    volumes:
+      - .:/auth-service
+      - /auth-service/node_modules
+
+  conflict-service:
+    build: ./conflict-service
+    container_name: conflict-service
+    ports:
+      - '5002:5002'
+    volumes:
+      - .:/cconflict-service
+      - /conflict-service/node_modules
+
+  survey-service:
+    build: ./survey-service
+    container_name: survey-service
+    ports:
+      - '5003:5003'
+    volumes:
+      - .:/survey-service
+      - /survey-service/node_modules

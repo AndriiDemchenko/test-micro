@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package conflict;
+
+service ConflictsService {
+  rpc create (ConflictData) returns (Conflict) {}
+}
+
+message ConflictData {
+  int32 surveyId = 1;
+  int32 answerId = 2;
+  repeated string conflicts = 3;
+}
+
+message Conflict {
+  int32 id = 1;
+}

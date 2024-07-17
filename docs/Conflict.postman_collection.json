@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "b9f3a9a7-4bee-4f58-b52a-56492b752061",
+		"name": "Conflict",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29607261"
+	},
+	"item": [
+		{
+			"name": "Get Conflicts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/conflicts",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"conflicts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Conflict",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/conflicts/5",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"conflicts",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

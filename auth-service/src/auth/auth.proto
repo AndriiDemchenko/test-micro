@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package auth;
+
+service AuthService {
+  rpc validateJwt (ValidateJwtRequest) returns (ValidateJwtResponse) {}
+}
+
+message ValidateJwtRequest {
+  string jwt = 1;
+}
+
+message ValidateJwtResponse {
+  bool isValid = 1;
+  optional int32 userId = 2;
+}
